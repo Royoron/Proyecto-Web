@@ -1,1 +1,25 @@
-/* estilos.css – StyleUp */
+/* VARIABLES DE COLOR */
+:root {
+  --dorado:        #C9A84C;
+  --dorado-claro:  #e6c97a;
+  --oscuro:        #0E0E0E;
+  --oscuro2:       #161616;
+  --oscuro3:       #1E1E1E;
+  --medio:         #2A2A2A;
+  --claro:         #F5F0E8;
+  --gris:          #888;
+}
+
+/*  RESET BÁSICO  */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--oscuro);
+  color: var(--claro);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
