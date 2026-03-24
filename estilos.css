@@ -23,3 +23,60 @@ body {
   font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
 }
+
+/*  NAVBAR */
+.navbar {
+  background: transparent;
+  padding: 1.4rem 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  border-bottom: 1px solid rgba(201,168,76,.12);
+  backdrop-filter: blur(12px);
+  transition: background .3s;
+}
+
+.navbar.con-scroll {
+  background: rgba(14,14,14,.95);
+}
+
+.navbar-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: var(--dorado) !important;
+  letter-spacing: .04em;
+  text-decoration: none;
+}
+.navbar-brand span {
+  color: var(--claro);
+}
+
+.nav-link {
+  color: var(--gris) !important;
+  font-size: .85rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: color .2s;
+  padding: .4rem 1rem !important;
+}
+.nav-link:hover {
+  color: var(--dorado) !important;
+}
+
+.btn-nav {
+  background: transparent;
+  border: 1px solid var(--dorado);
+  color: var(--dorado) !important;
+  border-radius: 2px;
+  font-size: .8rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: .45rem 1.3rem;
+  transition: background .2s, color .2s;
+}
+.btn-nav:hover {
+  background: var(--dorado);
+  color: var(--oscuro) !important;
+}
