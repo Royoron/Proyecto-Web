@@ -36,11 +36,9 @@ body {
   backdrop-filter: blur(12px);
   transition: background .3s;
 }
-
 .navbar.con-scroll {
   background: rgba(14,14,14,.95);
 }
-
 .navbar-brand {
   font-family: 'Playfair Display', serif;
   font-size: 1.7rem;
@@ -52,7 +50,6 @@ body {
 .navbar-brand span {
   color: var(--claro);
 }
-
 .nav-link {
   color: var(--gris) !important;
   font-size: .85rem;
@@ -64,7 +61,6 @@ body {
 .nav-link:hover {
   color: var(--dorado) !important;
 }
-
 .btn-nav {
   background: transparent;
   border: 1px solid var(--dorado);
@@ -90,8 +86,6 @@ body {
   overflow: hidden;
   padding-top: 80px;
 }
-
-/* Fondo con degradado sutil */
 .hero::after {
   content: '';
   position: absolute;
@@ -101,8 +95,6 @@ body {
     radial-gradient(ellipse 40% 50% at 10% 80%, rgba(201,168,76,.05) 0%, transparent 60%);
   pointer-events: none;
 }
-
-/* Líneas verticales decorativas */
 .hero-lineas {
   position: absolute;
   right: 0;
@@ -118,8 +110,6 @@ body {
   );
   pointer-events: none;
 }
-
-/* Letra grande de fondo */
 .hero-letra {
   position: absolute;
   right: 6%;
@@ -132,7 +122,6 @@ body {
   user-select: none;
   pointer-events: none;
 }
-
 .hero-etiqueta {
   display: inline-flex;
   align-items: center;
@@ -152,7 +141,6 @@ body {
   height: 1px;
   background: var(--dorado);
 }
-
 .hero-titulo {
   font-family: 'Playfair Display', serif;
   font-size: clamp(3rem, 7vw, 6rem);
@@ -167,7 +155,6 @@ body {
   color: var(--dorado);
   font-style: italic;
 }
-
 .hero-descripcion {
   font-size: 1.05rem;
   color: var(--gris);
@@ -177,7 +164,6 @@ body {
   opacity: 0;
   animation: subirFadeIn .9s .5s ease forwards;
 }
-
 .hero-botones {
   display: flex;
   gap: 1rem;
@@ -206,7 +192,6 @@ body {
   color: var(--oscuro);
   transform: translateY(-2px);
 }
-
 .btn-contorno {
   background: transparent;
   color: var(--claro);
@@ -223,6 +208,125 @@ body {
 .btn-contorno:hover {
   border-color: var(--dorado);
   color: var(--dorado);
+}
+
+/* FRANJA DE ESTADÍSTICAS */
+.franja-estadisticas {
+  background: var(--oscuro3);
+  border-top: 1px solid rgba(201,168,76,.12);
+  border-bottom: 1px solid rgba(201,168,76,.12);
+  padding: 2rem 0;
+  position: relative;
+  z-index: 1;
+}
+.estadistica-item {
+  text-align: center;
+}
+.estadistica-numero {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--dorado);
+  display: block;
+  line-height: 1;
+}
+.estadistica-etiqueta {
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gris);
+  margin-top: .35rem;
+  display: block;
+}
+
+/* SECCIONES */
+.seccion {
+  padding: 6rem 0;
+  position: relative;
+  z-index: 1;
+}
+.seccion-etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .72rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--dorado);
+  margin-bottom: 1rem;
+}
+.seccion-etiqueta::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--dorado);
+}
+.seccion-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--claro);
+  margin-bottom: 1rem;
+}
+.seccion-titulo .acento {
+  color: var(--dorado);
+  font-style: italic;
+}
+.seccion-subtitulo {
+  color: var(--gris);
+  font-size: .95rem;
+  max-width: 440px;
+  line-height: 1.7;
+}
+
+/* TARJETAS DE SERVICIO */
+.tarjeta-servicio {
+  background: var(--oscuro3);
+  border: 1px solid rgba(201,168,76,.1);
+  border-radius: 4px;
+  padding: 2rem 1.8rem;
+  transition: border-color .25s, transform .25s;
+  height: 100%;
+}
+.tarjeta-servicio:hover {
+  border-color: var(--dorado);
+  transform: translateY(-4px);
+}
+.tarjeta-servicio .icono {
+  font-size: 1.8rem;
+  color: var(--dorado);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+.tarjeta-servicio h5 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--claro);
+  margin-bottom: .6rem;
+}
+.tarjeta-servicio p {
+  font-size: .88rem;
+  color: var(--gris);
+  line-height: 1.65;
+  margin: 0;
+}
+.tiempo-servicio {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--dorado);
+  opacity: .75;
+}
+
+/* SEPARADOR DORADO */
+.separador-dorado {
+  width: 48px;
+  height: 2px;
+  background: var(--dorado);
+  margin: 1.2rem 0 2rem;
 }
 
 /* ANIMACIONES */
