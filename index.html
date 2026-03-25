@@ -196,9 +196,51 @@
           <label class="etiqueta-campo">Contraseña</label>
           <input type="password" class="campo-formulario" placeholder="••••••••"/>
         </div>
-        <button class="btn-principal w-100" style="text-align:center;border-radius:3px;">Entrar</button>
+        <a href="dashboard.html" class="btn-principal w-100 d-block text-center" style="border-radius:3px;">Entrar</a>
         <p style="text-align:center;font-size:.78rem;color:var(--gris);margin-top:1.2rem;">
-          ¿No tienes cuenta? <a href="#" style="color:var(--dorado);text-decoration:none;">Regístrate aquí</a>
+          ¿No tienes cuenta? <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalRegistro" style="color:var(--dorado);text-decoration:none;">Regístrate aquí</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE REGISTRO -->
+<div class="modal fade" id="modalRegistro" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <i class="bi bi-person-plus me-2" style="font-size:1.1rem;"></i>
+          Crear cuenta
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="etiqueta-campo">Nombre completo</label>
+          <input type="text" class="campo-formulario" placeholder="Tu nombre"/>
+        </div>
+        <div class="mb-3">
+          <label class="etiqueta-campo">Teléfono / Cédula</label>
+          <input type="text" class="campo-formulario" placeholder="Número de contacto"/>
+        </div>
+        <div class="mb-3">
+          <label class="etiqueta-campo">Correo electrónico</label>
+          <input type="email" class="campo-formulario" placeholder="correo@ejemplo.com"/>
+        </div>
+        <div class="mb-4">
+          <label class="etiqueta-campo">Contraseña</label>
+          <input type="password" class="campo-formulario" placeholder="••••••••"/>
+        </div>
+        <button class="btn-principal w-100" style="text-align:center;border-radius:3px;">
+          <i class="bi bi-person-check me-2"></i>Registrarse
+        </button>
+        <p style="text-align:center;font-size:.78rem;color:var(--gris);margin-top:1.2rem;">
+          ¿Ya tienes cuenta?
+          <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal"
+             data-bs-target="#modalLogin"
+             style="color:var(--dorado);text-decoration:none;">Inicia sesión</a>
         </p>
       </div>
     </div>
