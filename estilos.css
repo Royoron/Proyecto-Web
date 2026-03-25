@@ -36,9 +36,7 @@ body {
   backdrop-filter: blur(12px);
   transition: background .3s;
 }
-.navbar.con-scroll {
-  background: rgba(14,14,14,.95);
-}
+.navbar.con-scroll { background: rgba(14,14,14,.95); }
 .navbar-brand {
   font-family: 'Playfair Display', serif;
   font-size: 1.7rem;
@@ -47,9 +45,7 @@ body {
   letter-spacing: .04em;
   text-decoration: none;
 }
-.navbar-brand span {
-  color: var(--claro);
-}
+.navbar-brand span { color: var(--claro); }
 .nav-link {
   color: var(--gris) !important;
   font-size: .85rem;
@@ -58,9 +54,7 @@ body {
   transition: color .2s;
   padding: .4rem 1rem !important;
 }
-.nav-link:hover {
-  color: var(--dorado) !important;
-}
+.nav-link:hover { color: var(--dorado) !important; }
 .btn-nav {
   background: transparent;
   border: 1px solid var(--dorado);
@@ -72,10 +66,7 @@ body {
   padding: .45rem 1.3rem;
   transition: background .2s, color .2s;
 }
-.btn-nav:hover {
-  background: var(--dorado);
-  color: var(--oscuro) !important;
-}
+.btn-nav:hover { background: var(--dorado); color: var(--oscuro) !important; }
 
 /* HERO  */
 .hero {
@@ -97,23 +88,14 @@ body {
 }
 .hero-lineas {
   position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  right: 0; top: 0; bottom: 0;
   width: 45%;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 48px,
-    rgba(201,168,76,.04) 48px,
-    rgba(201,168,76,.04) 49px
-  );
+  background: repeating-linear-gradient(90deg, transparent, transparent 48px, rgba(201,168,76,.04) 48px, rgba(201,168,76,.04) 49px);
   pointer-events: none;
 }
 .hero-letra {
   position: absolute;
-  right: 6%;
-  bottom: 8%;
+  right: 6%; bottom: 8%;
   font-family: 'Playfair Display', serif;
   font-size: clamp(8rem, 18vw, 18rem);
   font-weight: 900;
@@ -134,13 +116,7 @@ body {
   opacity: 0;
   animation: subirFadeIn .8s .2s ease forwards;
 }
-.hero-etiqueta::before {
-  content: '';
-  display: block;
-  width: 32px;
-  height: 1px;
-  background: var(--dorado);
-}
+.hero-etiqueta::before { content: ''; display: block; width: 32px; height: 1px; background: var(--dorado); }
 .hero-titulo {
   font-family: 'Playfair Display', serif;
   font-size: clamp(3rem, 7vw, 6rem);
@@ -151,10 +127,7 @@ body {
   opacity: 0;
   animation: subirFadeIn .9s .35s ease forwards;
 }
-.hero-titulo .acento {
-  color: var(--dorado);
-  font-style: italic;
-}
+.hero-titulo .acento { color: var(--dorado); font-style: italic; }
 .hero-descripcion {
   font-size: 1.05rem;
   color: var(--gris);
@@ -187,11 +160,7 @@ body {
   transition: background .2s, transform .15s;
   display: inline-block;
 }
-.btn-principal:hover {
-  background: var(--dorado-claro);
-  color: var(--oscuro);
-  transform: translateY(-2px);
-}
+.btn-principal:hover { background: var(--dorado-claro); color: var(--oscuro); transform: translateY(-2px); }
 .btn-contorno {
   background: transparent;
   color: var(--claro);
@@ -205,10 +174,7 @@ body {
   transition: border-color .2s, color .2s;
   display: inline-block;
 }
-.btn-contorno:hover {
-  border-color: var(--dorado);
-  color: var(--dorado);
-}
+.btn-contorno:hover { border-color: var(--dorado); color: var(--dorado); }
 
 /* FRANJA DE ESTADÍSTICAS */
 .franja-estadisticas {
@@ -219,9 +185,7 @@ body {
   position: relative;
   z-index: 1;
 }
-.estadistica-item {
-  text-align: center;
-}
+.estadistica-item { text-align: center; }
 .estadistica-numero {
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;
@@ -240,11 +204,7 @@ body {
 }
 
 /* SECCIONES */
-.seccion {
-  padding: 6rem 0;
-  position: relative;
-  z-index: 1;
-}
+.seccion { padding: 6rem 0; position: relative; z-index: 1; }
 .seccion-etiqueta {
   display: inline-flex;
   align-items: center;
@@ -255,13 +215,7 @@ body {
   color: var(--dorado);
   margin-bottom: 1rem;
 }
-.seccion-etiqueta::before {
-  content: '';
-  display: block;
-  width: 24px;
-  height: 1px;
-  background: var(--dorado);
-}
+.seccion-etiqueta::before { content: ''; display: block; width: 24px; height: 1px; background: var(--dorado); }
 .seccion-titulo {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2rem, 4vw, 3rem);
@@ -269,16 +223,8 @@ body {
   color: var(--claro);
   margin-bottom: 1rem;
 }
-.seccion-titulo .acento {
-  color: var(--dorado);
-  font-style: italic;
-}
-.seccion-subtitulo {
-  color: var(--gris);
-  font-size: .95rem;
-  max-width: 440px;
-  line-height: 1.7;
-}
+.seccion-titulo .acento { color: var(--dorado); font-style: italic; }
+.seccion-subtitulo { color: var(--gris); font-size: .95rem; max-width: 440px; line-height: 1.7; }
 
 /* TARJETAS DE SERVICIO */
 .tarjeta-servicio {
@@ -289,28 +235,10 @@ body {
   transition: border-color .25s, transform .25s;
   height: 100%;
 }
-.tarjeta-servicio:hover {
-  border-color: var(--dorado);
-  transform: translateY(-4px);
-}
-.tarjeta-servicio .icono {
-  font-size: 1.8rem;
-  color: var(--dorado);
-  margin-bottom: 1.2rem;
-  display: block;
-}
-.tarjeta-servicio h5 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.15rem;
-  color: var(--claro);
-  margin-bottom: .6rem;
-}
-.tarjeta-servicio p {
-  font-size: .88rem;
-  color: var(--gris);
-  line-height: 1.65;
-  margin: 0;
-}
+.tarjeta-servicio:hover { border-color: var(--dorado); transform: translateY(-4px); }
+.tarjeta-servicio .icono { font-size: 1.8rem; color: var(--dorado); margin-bottom: 1.2rem; display: block; }
+.tarjeta-servicio h5 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--claro); margin-bottom: .6rem; }
+.tarjeta-servicio p { font-size: .88rem; color: var(--gris); line-height: 1.65; margin: 0; }
 .tiempo-servicio {
   display: inline-block;
   margin-top: 1rem;
@@ -320,6 +248,26 @@ body {
   color: var(--dorado);
   opacity: .75;
 }
+
+/* TARJETAS DE BARBERO */
+.tarjeta-barbero { text-align: center; }
+.avatar-barbero {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--medio);
+  border: 2px solid rgba(201,168,76,.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--dorado);
+  margin: 0 auto 1rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+.tarjeta-barbero h6 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--claro); margin-bottom: .2rem; }
+.tarjeta-barbero small { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dorado); }
 
 /* SEPARADOR DORADO */
 .separador-dorado {
@@ -331,12 +279,6 @@ body {
 
 /* ANIMACIONES */
 @keyframes subirFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(22px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
 }
