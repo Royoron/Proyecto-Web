@@ -176,33 +176,6 @@ body {
 }
 .btn-contorno:hover { border-color: var(--dorado); color: var(--dorado); }
 
-/* FRANJA DE ESTADÍSTICAS */
-.franja-estadisticas {
-  background: var(--oscuro3);
-  border-top: 1px solid rgba(201,168,76,.12);
-  border-bottom: 1px solid rgba(201,168,76,.12);
-  padding: 2rem 0;
-  position: relative;
-  z-index: 1;
-}
-.estadistica-item { text-align: center; }
-.estadistica-numero {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--dorado);
-  display: block;
-  line-height: 1;
-}
-.estadistica-etiqueta {
-  font-size: .72rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--gris);
-  margin-top: .35rem;
-  display: block;
-}
-
 /* SECCIONES */
 .seccion { padding: 6rem 0; position: relative; z-index: 1; }
 .seccion-etiqueta {
@@ -276,6 +249,49 @@ body {
   background: var(--dorado);
   margin: 1.2rem 0 2rem;
 }
+
+/* MODAL DE INICIO DE SESIÓN */
+.etiqueta-campo {
+  font-size: .75rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gris);
+  margin-bottom: .45rem;
+  display: block;
+}
+
+.campo-formulario {
+  background: var(--oscuro2);
+  border: 1px solid rgba(201,168,76,.18);
+  border-radius: 2px;
+  color: var(--claro);
+  padding: .7rem 1rem;
+  font-size: .9rem;
+  width: 100%;
+  transition: border-color .2s;
+  outline: none;
+}
+.modal-content {
+  background: var(--oscuro2);
+  border: 1px solid rgba(201,168,76,.2);
+  border-radius: 4px;
+  color: var(--claro);
+}
+.modal-header {
+  border-bottom: 1px solid rgba(201,168,76,.1);
+  padding: 1.5rem 1.8rem 1rem;
+}
+.modal-title {
+  font-family: 'Playfair Display', serif;
+  color: var(--dorado);
+}
+.btn-close {
+  filter: invert(1) brightness(.6);
+}
+.modal-body {
+  padding: 1.8rem;
+}
+
 
 /* ANIMACIONES */
 @keyframes subirFadeIn {
