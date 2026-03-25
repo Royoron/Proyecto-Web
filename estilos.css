@@ -292,9 +292,54 @@ body {
   padding: 1.8rem;
 }
 
+/* PIE DE PÁGINA */
+footer {
+  background: var(--oscuro2);
+  border-top: 1px solid rgba(201,168,76,.1);
+  padding: 2.5rem 0 1.8rem;
+  position: relative;
+  z-index: 1;
+}
+footer .marca {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--dorado);
+}
+footer p {
+  font-size: .83rem;
+  color: var(--gris);
+  margin-top: .5rem;
+}
+footer .derechos {
+  font-size: .75rem;
+  color: rgba(136,136,136,.4);
+  text-align: center;
+  border-top: 1px solid rgba(201,168,76,.06);
+  padding-top: 1.2rem;
+  margin-top: 2rem;
+}
 
 /* ANIMACIONES */
 @keyframes subirFadeIn {
   from { opacity: 0; transform: translateY(22px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero {
+    text-align: center;
+  }
+  .hero-descripcion {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-botones {
+    justify-content: center;
+  }
+  .separador-dorado {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
