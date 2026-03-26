@@ -58,3 +58,67 @@
     </button>
   </div>
 </aside>
+
+<!-- ══ CONTENIDO PRINCIPAL ══ -->
+<main class="main-content">
+ 
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="d-flex align-items-center gap-3">
+      <button class="btn-menu-movil" onclick="abrirSidebar()"><i class="bi bi-list"></i></button>
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--claro);" id="tituloPagina">
+          Panel de <span style="color:var(--dorado);font-style:italic;">inicio</span>
+        </div>
+        <div style="font-size:.78rem;color:var(--gris);" id="fechaTopbar"></div>
+      </div>
+    </div>
+    <div class="avatar-barbero" style="width:42px;height:42px;font-size:1rem;margin:0;cursor:pointer;" onclick="mostrarPanel('perfil')" id="avatarTopbar">R</div>
+  </div>
+ 
+  <!-- ── PANEL: INICIO ── -->
+  <div class="panel activo" id="panel-inicio">
+ 
+    
+ 
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <div class="tarjeta-servicio" style="height:auto;">
+          <div class="seccion-etiqueta">Próximas citas</div>
+          <table class="tabla-citas">
+            <thead>
+              <tr><th>Servicio</th><th>Barbero</th><th>Fecha</th><th>Estado</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Corte Clásico</td><td>Carlos Mendez</td><td>28 Mar · 09:00</td>
+                <td><span class="badge-estado badge-confirmada">Confirmada</span></td>
+              </tr>
+              <tr>
+                <td>Arreglo de Barba</td><td>Andrés Torres</td><td>02 Abr · 11:00</td>
+                <td><span class="badge-estado badge-pendiente">Pendiente</span></td>
+              </tr>
+              <tr>
+                <td>Paquete Completo</td><td>Miguel Peña</td><td>10 Abr · 10:00</td>
+                <td><span class="badge-estado badge-pendiente">Pendiente</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="tarjeta-servicio" style="height:auto;">
+          <div class="seccion-etiqueta">Acción rápida</div>
+          <p style="font-size:.88rem;color:var(--gris);line-height:1.65;margin-bottom:1.2rem;">
+            ¿Listo para tu próxima visita? Agenda en segundos con tu barbero favorito.
+          </p>
+          <button class="btn-principal w-100 mb-2" onclick="mostrarPanel('reservar')">
+            <i class="bi bi-calendar-plus me-2"></i>Nueva reserva
+          </button>
+          <button class="btn-contorno w-100" onclick="mostrarPanel('historial')">
+            Ver historial completo
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
