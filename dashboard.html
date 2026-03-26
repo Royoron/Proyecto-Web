@@ -122,3 +122,151 @@
       </div>
     </div>
   </div>
+
+  <!-- ── PANEL: NUEVA RESERVA ── -->
+<div class="panel" id="panel-reservar">
+  <div class="row g-4">
+    <div class="col-lg-4">
+      <div class="seccion-etiqueta">Agenda fácil</div>
+      <h2 class="seccion-titulo">Reserva tu <span class="acento">cita</span></h2>
+      <div class="separador-dorado"></div>
+      <p class="seccion-subtitulo">Selecciona tu barbero, servicio, fecha y hora. Confirma al instante.</p>
+      <div class="d-flex flex-column gap-2 mt-3">
+        <div style="display:flex;align-items:center;gap:.6rem;">
+          <i class="bi bi-check-circle-fill" style="color:var(--dorado);"></i>
+          <span style="font-size:.85rem;color:var(--gris);">Confirmación inmediata</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:.6rem;">
+          <i class="bi bi-check-circle-fill" style="color:var(--dorado);"></i>
+          <span style="font-size:.85rem;color:var(--gris);">Cancelación sin costo</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:.6rem;">
+          <i class="bi bi-check-circle-fill" style="color:var(--dorado);"></i>
+          <span style="font-size:.85rem;color:var(--gris);">Historial de citas</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <div class="tarjeta-servicio" style="height:auto;">
+        <h5 style="font-family:'Playfair Display',serif;color:var(--claro);margin-bottom:1.4rem;">Nueva reservación</h5>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="etiqueta-campo">Barbero</label>
+            <select class="campo-formulario" id="selBarbero">
+              <option value="">Seleccionar barbero</option>
+              <option>Carlos Mendez – Corte & Fade</option>
+              <option>Andrés Torres – Barba & Diseño</option>
+              <option>Luis Romero – Color & Tinte</option>
+              <option>Miguel Peña – Paquete Completo</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="etiqueta-campo">Especialidad</label>
+            <select class="campo-formulario" id="selEspecialidad">
+              <option value="">Seleccionar servicio</option>
+              <option>Corte Clásico – 30 min</option>
+              <option>Arreglo de Barba – 20 min</option>
+              <option>Tinte & Color – 60 min</option>
+              <option>Paquete Completo – 75 min</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="etiqueta-campo">Fecha</label>
+            <input type="date" class="campo-formulario" id="selFecha"/>
+          </div>
+          <div class="col-md-6">
+            <label class="etiqueta-campo">Hora</label>
+            <select class="campo-formulario" id="selHora">
+              <option value="">Seleccionar hora</option>
+              <option>09:00 AM</option><option>10:00 AM</option>
+              <option>11:00 AM</option><option>12:00 PM</option>
+              <option>02:00 PM</option><option>03:00 PM</option>
+              <option>04:00 PM</option>
+            </select>
+          </div>
+
+          <!-- IMAGEN DE REFERENCIA -->
+          <div class="col-12">
+            <label class="etiqueta-campo">Imagen de referencia (opcional)</label>
+
+            <!-- Input oculto — solo acepta JPG, JPEG, PNG y WEBP -->
+            <input
+              type="file"
+              id="inputImagen"
+              accept=".jpg,.jpeg,.png,.webp"
+              style="display:none;"
+              onchange="cargarImagen(event)"
+            />
+
+            <!-- Zona de clic que activa el input -->
+            <div
+              id="zonaImagen"
+              onclick="document.getElementById('inputImagen').click()"
+              style="
+                border: 1px dashed rgba(201,168,76,.35);
+                border-radius: 3px;
+                padding: 1.4rem;
+                text-align: center;
+                cursor: pointer;
+                transition: border-color .2s, background .2s;
+                background: var(--oscuro2);
+              "
+              onmouseover="this.style.borderColor='var(--dorado)';this.style.background='rgba(201,168,76,.05)'"
+              onmouseout="this.style.borderColor='rgba(201,168,76,.35)';this.style.background='var(--oscuro2)'"
+            >
+              <!-- Vista inicial (sin imagen) -->
+              <div id="zonaPlaceholder">
+                <i class="bi bi-image" style="font-size:1.8rem;color:rgba(201,168,76,.4);display:block;margin-bottom:.5rem;"></i>
+                <span style="font-size:.82rem;color:var(--gris);">
+                  Haz clic para subir una imagen de referencia
+                </span><br/>
+                <span style="font-size:.72rem;color:rgba(136,136,136,.5);letter-spacing:.08em;">
+                  JPG · JPEG · PNG · WEBP
+                </span>
+              </div>
+
+              <!-- Preview de la imagen (oculto hasta que se suba) -->
+              <div id="zonaPreview" style="display:none;">
+                <img
+                  id="previewImg"
+                  style="max-height:140px;max-width:100%;border-radius:3px;object-fit:cover;"
+                  alt="Referencia de corte"
+                />
+                <div style="margin-top:.6rem;font-size:.78rem;color:var(--dorado);" id="nombreArchivo"></div>
+                <button
+                  class="btn-nav"
+                  style="margin-top:.5rem;font-size:.7rem;padding:.25rem .7rem;"
+                  onclick="eliminarImagen(event)"
+                >
+                  <i class="bi bi-x me-1"></i>Quitar imagen
+                </button>
+              </div>
+            </div>
+
+            <!-- Mensaje de error por tipo de archivo -->
+            <div id="errorImagen" style="display:none;margin-top:.4rem;font-size:.78rem;color:#dc5050;">
+              <i class="bi bi-exclamation-circle me-1"></i>
+              Solo se permiten imágenes JPG, JPEG, PNG o WEBP.
+            </div>
+          </div>
+
+          <div class="col-12 mt-1">
+            <button class="btn-principal" onclick="confirmarCita()">
+              <i class="bi bi-calendar2-check me-2"></i>Confirmar cita
+            </button>
+          </div>
+        </div>
+
+        <div id="alertaReserva" style="display:none;margin-top:1rem;background:rgba(80,180,120,.1);border:1px solid rgba(80,180,120,.25);border-radius:3px;color:#50b478;padding:.75rem 1rem;font-size:.88rem;">
+          <i class="bi bi-check-circle me-2"></i>¡Cita reservada con éxito! Te esperamos.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</html>
