@@ -11,30 +11,31 @@
   <link rel="stylesheet" href="dashboard.css"/>
 </head>
 <body>
- 
+
 <div class="overlay-sidebar" id="overlay" onclick="cerrarSidebar()"></div>
- 
+
 <!-- ══ SIDEBAR ══ -->
 <aside class="sidebar" id="sidebar">
- 
+
   <div class="sidebar-header">
     <a class="navbar-brand" href="index.html">Style<span>Up</span></a>
   </div>
- 
+
   <div class="sidebar-usuario">
-    <div class="avatar-barbero" style="width:42px;height:42px;font-size:1rem;margin:0;flex-shrink:0;" id="avatarSidebar">R</div>
+    <!-- Inicial y datos del usuario se inyectan desde usuarioActual en script.js -->
+    <div class="avatar-barbero" style="width:42px;height:42px;font-size:1rem;margin:0;flex-shrink:0;" id="avatarSidebar"></div>
     <div style="overflow:hidden;">
-      <div style="font-size:.88rem;font-weight:500;color:var(--claro);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" id="nombreSidebar">Juan Pérez</div>
-      <div style="font-size:.72rem;color:var(--gris);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" id="emailSidebar">juan@styleup.com</div>
+      <div style="font-size:.88rem;font-weight:500;color:var(--claro);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" id="nombreSidebar"></div>
+      <div style="font-size:.72rem;color:var(--gris);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" id="emailSidebar"></div>
     </div>
   </div>
- 
+
   <nav class="sidebar-nav">
     <div class="nav-seccion-label">Principal</div>
     <div class="nav-item-dash activo" onclick="mostrarPanel('inicio')">
       <i class="bi bi-grid-1x2"></i> Inicio
     </div>
- 
+
     <div class="nav-seccion-label">Citas</div>
     <div class="nav-item-dash" onclick="mostrarPanel('reservar')">
       <i class="bi bi-calendar-plus"></i> Nueva reserva
@@ -45,13 +46,13 @@
     <div class="nav-item-dash" onclick="mostrarPanel('historial')">
       <i class="bi bi-clock-history"></i> Historial
     </div>
- 
+
     <div class="nav-seccion-label">Cuenta</div>
     <div class="nav-item-dash" onclick="mostrarPanel('perfil')">
       <i class="bi bi-person"></i> Mi perfil
     </div>
   </nav>
- 
+
   <div class="sidebar-footer">
     <button class="btn-cerrar-sesion" onclick="cerrarSesion()">
       <i class="bi bi-box-arrow-left"></i> Cerrar sesión
@@ -61,7 +62,7 @@
 
 <!-- ══ CONTENIDO PRINCIPAL ══ -->
 <main class="main-content">
- 
+
   <!-- Topbar -->
   <div class="topbar">
     <div class="d-flex align-items-center gap-3">
@@ -70,17 +71,16 @@
         <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--claro);" id="tituloPagina">
           Panel de <span style="color:var(--dorado);font-style:italic;">inicio</span>
         </div>
+        <!-- Fecha inyectada dinámicamente desde renderizarFecha() -->
         <div style="font-size:.78rem;color:var(--gris);" id="fechaTopbar"></div>
       </div>
     </div>
-    <div class="avatar-barbero" style="width:42px;height:42px;font-size:1rem;margin:0;cursor:pointer;" onclick="mostrarPanel('perfil')" id="avatarTopbar">R</div>
+    <!-- Inicial del avatar inyectada desde usuarioActual -->
+    <div class="avatar-barbero" style="width:42px;height:42px;font-size:1rem;margin:0;cursor:pointer;" onclick="mostrarPanel('perfil')" id="avatarTopbar"></div>
   </div>
- 
+
   <!-- ── PANEL: INICIO ── -->
   <div class="panel activo" id="panel-inicio">
- 
-    
- 
     <div class="row g-4">
       <div class="col-lg-7">
         <div class="tarjeta-servicio" style="height:auto;">
@@ -89,20 +89,8 @@
             <thead>
               <tr><th>Servicio</th><th>Barbero</th><th>Fecha</th><th>Estado</th></tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>Corte Clásico</td><td>Carlos Mendez</td><td>28 Mar · 09:00</td>
-                <td><span class="badge-estado badge-confirmada">Confirmada</span></td>
-              </tr>
-              <tr>
-                <td>Arreglo de Barba</td><td>Andrés Torres</td><td>02 Abr · 11:00</td>
-                <td><span class="badge-estado badge-pendiente">Pendiente</span></td>
-              </tr>
-              <tr>
-                <td>Paquete Completo</td><td>Miguel Peña</td><td>10 Abr · 10:00</td>
-                <td><span class="badge-estado badge-pendiente">Pendiente</span></td>
-              </tr>
-            </tbody>
+            <!-- Filas generadas desde el array citasProximas en script.js -->
+            <tbody id="tbodyCitasProximas"></tbody>
           </table>
         </div>
       </div>
@@ -124,149 +112,215 @@
   </div>
 
   <!-- ── PANEL: NUEVA RESERVA ── -->
-<div class="panel" id="panel-reservar">
-  <div class="row g-4">
-    <div class="col-lg-4">
-      <div class="seccion-etiqueta">Agenda fácil</div>
-      <h2 class="seccion-titulo">Reserva tu <span class="acento">cita</span></h2>
-      <div class="separador-dorado"></div>
-      <p class="seccion-subtitulo">Selecciona tu barbero, servicio, fecha y hora. Confirma al instante.</p>
-      <div class="d-flex flex-column gap-2 mt-3">
-        <div style="display:flex;align-items:center;gap:.6rem;">
-          <i class="bi bi-check-circle-fill" style="color:var(--dorado);"></i>
-          <span style="font-size:.85rem;color:var(--gris);">Confirmación inmediata</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:.6rem;">
-          <i class="bi bi-check-circle-fill" style="color:var(--dorado);"></i>
-          <span style="font-size:.85rem;color:var(--gris);">Cancelación sin costo</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:.6rem;">
-          <i class="bi bi-check-circle-fill" style="color:var(--dorado);"></i>
-          <span style="font-size:.85rem;color:var(--gris);">Historial de citas</span>
+  <div class="panel" id="panel-reservar">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="seccion-etiqueta">Agenda fácil</div>
+        <h2 class="seccion-titulo">Reserva tu <span class="acento">cita</span></h2>
+        <div class="separador-dorado"></div>
+        <p class="seccion-subtitulo">Selecciona tu barbero, servicio, fecha y hora. Confirma al instante.</p>
+        <div class="d-flex flex-column gap-2 mt-3">
+          <div style="display:flex;align-items:center;gap:.6rem;">
+            <i class="bi bi-check-circle-fill" style="color:var(--dorado);"></i>
+            <span style="font-size:.85rem;color:var(--gris);">Confirmación inmediata</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.6rem;">
+            <i class="bi bi-check-circle-fill" style="color:var(--dorado);"></i>
+            <span style="font-size:.85rem;color:var(--gris);">Cancelación sin costo</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.6rem;">
+            <i class="bi bi-check-circle-fill" style="color:var(--dorado);"></i>
+            <span style="font-size:.85rem;color:var(--gris);">Historial de citas</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-lg-8">
-      <div class="tarjeta-servicio" style="height:auto;">
-        <h5 style="font-family:'Playfair Display',serif;color:var(--claro);margin-bottom:1.4rem;">Nueva reservación</h5>
-        <div class="row g-3">
-          <div class="col-md-6">
-            <label class="etiqueta-campo">Barbero</label>
-            <select class="campo-formulario" id="selBarbero">
-              <option value="">Seleccionar barbero</option>
-              <option>Carlos Mendez – Corte & Fade</option>
-              <option>Andrés Torres – Barba & Diseño</option>
-              <option>Luis Romero – Color & Tinte</option>
-              <option>Miguel Peña – Paquete Completo</option>
-            </select>
-          </div>
-          <div class="col-md-6">
-            <label class="etiqueta-campo">Especialidad</label>
-            <select class="campo-formulario" id="selEspecialidad">
-              <option value="">Seleccionar servicio</option>
-              <option>Corte Clásico – 30 min</option>
-              <option>Arreglo de Barba – 20 min</option>
-              <option>Tinte & Color – 60 min</option>
-              <option>Paquete Completo – 75 min</option>
-            </select>
-          </div>
-          <div class="col-md-6">
-            <label class="etiqueta-campo">Fecha</label>
-            <input type="date" class="campo-formulario" id="selFecha"/>
-          </div>
-          <div class="col-md-6">
-            <label class="etiqueta-campo">Hora</label>
-            <select class="campo-formulario" id="selHora">
-              <option value="">Seleccionar hora</option>
-              <option>09:00 AM</option><option>10:00 AM</option>
-              <option>11:00 AM</option><option>12:00 PM</option>
-              <option>02:00 PM</option><option>03:00 PM</option>
-              <option>04:00 PM</option>
-            </select>
-          </div>
+      <div class="col-lg-8">
+        <div class="tarjeta-servicio" style="height:auto;">
+          <h5 style="font-family:'Playfair Display',serif;color:var(--claro);margin-bottom:1.4rem;">Nueva reservación</h5>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="etiqueta-campo">Barbero</label>
+              <!-- Opciones generadas desde el array barberos en script.js -->
+              <select class="campo-formulario" id="selBarbero"></select>
+            </div>
+            <div class="col-md-6">
+              <label class="etiqueta-campo">Especialidad</label>
+              <!-- Opciones generadas desde el array servicios en script.js -->
+              <select class="campo-formulario" id="selEspecialidad"></select>
+            </div>
+            <div class="col-md-6">
+              <label class="etiqueta-campo">Fecha</label>
+              <input type="date" class="campo-formulario" id="selFecha"/>
+            </div>
+            <div class="col-md-6">
+              <label class="etiqueta-campo">Hora</label>
+              <!-- Opciones generadas desde el array horasDisponibles en script.js -->
+              <select class="campo-formulario" id="selHora"></select>
+            </div>
 
-          <!-- IMAGEN DE REFERENCIA -->
-          <div class="col-12">
-            <label class="etiqueta-campo">Imagen de referencia (opcional)</label>
-
-            <!-- Input oculto — solo acepta JPG, JPEG, PNG y WEBP -->
-            <input
-              type="file"
-              id="inputImagen"
-              accept=".jpg,.jpeg,.png,.webp"
-              style="display:none;"
-              onchange="cargarImagen(event)"
-            />
-
-            <!-- Zona de clic que activa el input -->
-            <div
-              id="zonaImagen"
-              onclick="document.getElementById('inputImagen').click()"
-              style="
-                border: 1px dashed rgba(201,168,76,.35);
-                border-radius: 3px;
-                padding: 1.4rem;
-                text-align: center;
-                cursor: pointer;
-                transition: border-color .2s, background .2s;
-                background: var(--oscuro2);
-              "
-              onmouseover="this.style.borderColor='var(--dorado)';this.style.background='rgba(201,168,76,.05)'"
-              onmouseout="this.style.borderColor='rgba(201,168,76,.35)';this.style.background='var(--oscuro2)'"
-            >
-              <!-- Vista inicial (sin imagen) -->
-              <div id="zonaPlaceholder">
-                <i class="bi bi-image" style="font-size:1.8rem;color:rgba(201,168,76,.4);display:block;margin-bottom:.5rem;"></i>
-                <span style="font-size:.82rem;color:var(--gris);">
-                  Haz clic para subir una imagen de referencia
-                </span><br/>
-                <span style="font-size:.72rem;color:rgba(136,136,136,.5);letter-spacing:.08em;">
-                  JPG · JPEG · PNG · WEBP
-                </span>
+            <!-- IMAGEN DE REFERENCIA -->
+            <div class="col-12">
+              <label class="etiqueta-campo">Imagen de referencia (opcional)</label>
+              <input
+                type="file"
+                id="inputImagen"
+                accept=".jpg,.jpeg,.png,.webp"
+                style="display:none;"
+                onchange="cargarImagen(event)"
+              />
+              <div
+                id="zonaImagen"
+                onclick="document.getElementById('inputImagen').click()"
+                style="border:1px dashed rgba(201,168,76,.35);border-radius:3px;padding:1.4rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;background:var(--oscuro2);"
+                onmouseover="this.style.borderColor='var(--dorado)';this.style.background='rgba(201,168,76,.05)'"
+                onmouseout="this.style.borderColor='rgba(201,168,76,.35)';this.style.background='var(--oscuro2)'"
+              >
+                <div id="zonaPlaceholder">
+                  <i class="bi bi-image" style="font-size:1.8rem;color:rgba(201,168,76,.4);display:block;margin-bottom:.5rem;"></i>
+                  <span style="font-size:.82rem;color:var(--gris);">Haz clic para subir una imagen de referencia</span><br/>
+                  <span style="font-size:.72rem;color:rgba(136,136,136,.5);letter-spacing:.08em;">JPG · JPEG · PNG · WEBP</span>
+                </div>
+                <div id="zonaPreview" style="display:none;">
+                  <img id="previewImg" style="max-height:140px;max-width:100%;border-radius:3px;object-fit:cover;" alt="Referencia de corte"/>
+                  <div style="margin-top:.6rem;font-size:.78rem;color:var(--dorado);" id="nombreArchivo"></div>
+                  <button class="btn-nav" style="margin-top:.5rem;font-size:.7rem;padding:.25rem .7rem;" onclick="eliminarImagen(event)">
+                    <i class="bi bi-x me-1"></i>Quitar imagen
+                  </button>
+                </div>
               </div>
-
-              <!-- Preview de la imagen (oculto hasta que se suba) -->
-              <div id="zonaPreview" style="display:none;">
-                <img
-                  id="previewImg"
-                  style="max-height:140px;max-width:100%;border-radius:3px;object-fit:cover;"
-                  alt="Referencia de corte"
-                />
-                <div style="margin-top:.6rem;font-size:.78rem;color:var(--dorado);" id="nombreArchivo"></div>
-                <button
-                  class="btn-nav"
-                  style="margin-top:.5rem;font-size:.7rem;padding:.25rem .7rem;"
-                  onclick="eliminarImagen(event)"
-                >
-                  <i class="bi bi-x me-1"></i>Quitar imagen
-                </button>
+              <div id="errorImagen" style="display:none;margin-top:.4rem;font-size:.78rem;color:#dc5050;">
+                <i class="bi bi-exclamation-circle me-1"></i>Solo se permiten imágenes JPG, JPEG, PNG o WEBP.
               </div>
             </div>
 
-            <!-- Mensaje de error por tipo de archivo -->
-            <div id="errorImagen" style="display:none;margin-top:.4rem;font-size:.78rem;color:#dc5050;">
-              <i class="bi bi-exclamation-circle me-1"></i>
-              Solo se permiten imágenes JPG, JPEG, PNG o WEBP.
+            <div class="col-12 mt-1">
+              <button class="btn-principal" onclick="confirmarCita()">
+                <i class="bi bi-calendar2-check me-2"></i>Confirmar cita
+              </button>
             </div>
           </div>
 
-          <div class="col-12 mt-1">
-            <button class="btn-principal" onclick="confirmarCita()">
-              <i class="bi bi-calendar2-check me-2"></i>Confirmar cita
-            </button>
+          <div id="alertaReserva" style="display:none;margin-top:1rem;background:rgba(80,180,120,.1);border:1px solid rgba(80,180,120,.25);border-radius:3px;color:#50b478;padding:.75rem 1rem;font-size:.88rem;">
+            <i class="bi bi-check-circle me-2"></i>¡Cita reservada con éxito! Te esperamos.
           </div>
-        </div>
-
-        <div id="alertaReserva" style="display:none;margin-top:1rem;background:rgba(80,180,120,.1);border:1px solid rgba(80,180,120,.25);border-radius:3px;color:#50b478;padding:.75rem 1rem;font-size:.88rem;">
-          <i class="bi bi-check-circle me-2"></i>¡Cita reservada con éxito! Te esperamos.
         </div>
       </div>
     </div>
   </div>
-</div>
-</body>
+
+  <!-- ── PANEL: MIS CITAS ── -->
+  <div class="panel" id="panel-miscitas">
+    <div class="tarjeta-servicio" style="height:auto;">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="seccion-etiqueta" style="margin:0;">Citas programadas</div>
+        <button class="btn-nav" onclick="mostrarPanel('reservar')">
+          <i class="bi bi-plus me-1"></i>Nueva cita
+        </button>
+      </div>
+      <table class="tabla-citas">
+        <thead>
+          <tr><th>Servicio</th><th>Barbero</th><th>Fecha</th><th>Hora</th><th>Estado</th><th></th></tr>
+        </thead>
+        <!-- Filas generadas desde el array citasProximas en script.js -->
+        <tbody id="tbodyMisCitas"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── PANEL: HISTORIAL ── -->
+  <div class="panel" id="panel-historial">
+    <div class="tarjeta-servicio" style="height:auto;">
+      <div class="seccion-etiqueta">Historial completo</div>
+      <table class="tabla-citas">
+        <thead>
+          <tr><th>Servicio</th><th>Barbero</th><th>Fecha</th><th>Estado</th></tr>
+        </thead>
+        <!-- Filas generadas desde el array historialCitas en script.js -->
+        <tbody id="tbodyHistorial"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── PANEL: PERFIL ── -->
+  <div class="panel" id="panel-perfil">
+    <div class="row g-4">
+
+      <div class="col-lg-4">
+        <div class="tarjeta-servicio text-center" style="height:auto;">
+          <!-- Datos inyectados desde usuarioActual en script.js -->
+          <div class="avatar-barbero mx-auto mb-3" style="width:80px;height:80px;font-size:2rem;" id="avatarPerfil"></div>
+          <h5 style="font-family:'Playfair Display',serif;color:var(--claro);" id="nombrePerfil"></h5>
+          <p style="font-size:.78rem;color:var(--gris);margin-top:.3rem;" id="emailPerfil"></p>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(201,168,76,.08);">
+            <span class="tiempo-servicio d-block mb-1">Miembro desde</span>
+            <span style="color:var(--dorado);font-size:.9rem;" id="miembroPerfil"></span>
+          </div>
+          <div style="margin-top:.8rem;padding-top:.8rem;border-top:1px solid rgba(201,168,76,.08);">
+            <span class="tiempo-servicio d-block mb-1">Visitas totales</span>
+            <span style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--claro);" id="visitasPerfil"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="tarjeta-servicio" style="height:auto;">
+          <div class="seccion-etiqueta">Información personal</div>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="etiqueta-campo">Nombre completo</label>
+              <!-- Valor inyectado desde usuarioActual en script.js -->
+              <input type="text" class="campo-formulario" id="inputNombre"/>
+            </div>
+            <div class="col-md-6">
+              <label class="etiqueta-campo">Teléfono</label>
+              <input type="text" class="campo-formulario" id="inputTelefono" placeholder="+57 300 000 0000"/>
+            </div>
+            <div class="col-md-6">
+              <label class="etiqueta-campo">Correo electrónico</label>
+              <input type="email" class="campo-formulario" id="inputEmail"/>
+            </div>
+            <div class="col-md-6">
+              <label class="etiqueta-campo">Cédula</label>
+              <input type="text" class="campo-formulario" id="inputCedula" placeholder="Número de cédula"/>
+            </div>
+            <div class="col-12 mt-1">
+              <button class="btn-principal" onclick="guardarPerfil()">
+                <i class="bi bi-check2 me-2"></i>Guardar cambios
+              </button>
+            </div>
+          </div>
+          <div id="alertaPerfil" style="display:none;margin-top:1rem;background:rgba(80,180,120,.1);border:1px solid rgba(80,180,120,.25);border-radius:3px;color:#50b478;padding:.75rem 1rem;font-size:.88rem;">
+            <i class="bi bi-check-circle me-2"></i>Perfil actualizado correctamente.
+          </div>
+        </div>
+
+        <div class="tarjeta-servicio mt-3" style="height:auto;">
+          <div class="seccion-etiqueta">Cambiar contraseña</div>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="etiqueta-campo">Contraseña actual</label>
+              <input type="password" class="campo-formulario" placeholder="••••••••"/>
+            </div>
+            <div class="col-md-6">
+              <label class="etiqueta-campo">Nueva contraseña</label>
+              <input type="password" class="campo-formulario" placeholder="••••••••"/>
+            </div>
+            <div class="col-12 mt-1">
+              <button class="btn-nav">
+                <i class="bi bi-shield-lock me-2"></i>Actualizar contraseña
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
+</body>
 </html>

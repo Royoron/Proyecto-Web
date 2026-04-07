@@ -1,4 +1,3 @@
-
 .sidebar {
     width: 250px;
     background: var(--oscuro2);
@@ -46,6 +45,7 @@
 .nav-item-dash i { font-size: .95rem; width: 16px; flex-shrink: 0; }
 .nav-item-dash:hover { color: var(--claro); background: rgba(201,168,76,.05); }
 .nav-item-dash.activo { color: var(--dorado); background: rgba(201,168,76,.08); border-left-color: var(--dorado); }
+
 .main-content { margin-left: 250px; min-height: 100vh; padding: 2rem 2.2rem; }
 
 .topbar {
@@ -78,6 +78,19 @@
 .tabla-citas tbody tr:hover { background: rgba(201,168,76,.04); }
 .tabla-citas tbody td { padding: .8rem .9rem; color: var(--claro); vertical-align: middle; }
 
+.badge-estado {
+    display: inline-block;
+    font-size: .68rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .22rem .65rem;
+    border-radius: 2px;
+}
+.badge-pendiente  { background: rgba(201,168,76,.15); color: var(--dorado); }
+.badge-confirmada { background: rgba(80,180,120,.15);  color: #50b478; }
+.badge-completada { background: rgba(100,150,255,.15); color: #6496ff; }
+.badge-cancelada  { background: rgba(220,80,80,.15);   color: #dc5050; }
+
 .btn-cerrar-sesion {
     display: flex;
     align-items: center;
@@ -91,4 +104,33 @@
     background: none;
     border: none;
     font-family: 'DM Sans', sans-serif;
+}
+.btn-cerrar-sesion:hover { color: #e06060; }
+
+.overlay-sidebar {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.6);
+    z-index: 40;
+}
+.overlay-sidebar.activo { display: block; }
+
+.btn-menu-movil {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--claro);
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+select.campo-formulario option { background: var(--oscuro2); }
+.campo-formulario:focus { border-color: var(--dorado); }
+
+@media (max-width: 900px) {
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.abierto { transform: translateX(0); }
+    .main-content { margin-left: 0; padding: 1.2rem; }
+    .btn-menu-movil { display: block; }
 }
